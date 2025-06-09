@@ -47,6 +47,8 @@
     <Compile Include="classes\Lealshin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="service\AccessAbility.cs" />
+    <Compile Include="service\mangeGeneral.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
