@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Malshinon.service
 {
-    internal class AccessAbility
+    internal class agentSERVICE
     {
         // לשאול איך אני עושה כאן את הבדיקה 
-        //bool checkAgent()
-        //{
-            //bool ans = false;
-            //return  ans;
-        //}
-        
+        bool checkAgent()
+        {
+            bool ans = false;
+            return ans;
+        }
+
     }
 }

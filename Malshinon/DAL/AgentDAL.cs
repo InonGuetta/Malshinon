@@ -20,7 +20,9 @@ namespace Malshinon.DAL
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 MySqlCommand cmd = new MySqlCommand(query,conn);
-                //cmd.Parameters.AddWithValue(@"agent_first_name", agent.agent_first_name);
+                cmd.Parameters.AddWithValue(@"agent_first_name", agent.agent_first_name);
+                cmd.Parameters.AddWithValue(@"agent_last_name", agent.agent_last_name);
+                cmd.Parameters.AddWithValue(@"agent_secret_code", agent.agent_secret_code);
             
             }
         }

@@ -8,7 +8,7 @@ using Malshinon.DAL;
 
 namespace Malshinon.service
 {
-    internal class ManageGeneral
+    internal class LealshinSERVICE
     {
         static string[] to_malsin_status = { "malshin", "reporter", "potential_agent" };
 
@@ -29,10 +29,9 @@ namespace Malshinon.service
                 // למה הוא חייב לקבל ערך
                 // למה הוא לא יכול לקבל לא לקבל את הערך הזה הרי כבר מוגדר לי בטבלת SQL 
                 // ככזה שיש לו ערך ברירת מחדל הווי אומר שהוא יכול לא לקבל שום ערך 
-                to_malsin_status[0],
-                "הוא מלשין רציני",
-                "הלשין על 3 אנשים"
-            ); LealshinDAL dal = new LealshinDAL();
+                //to_malsin_status[0],
+                "הוא מלשין רציני"
+                ); LealshinDAL dal = new LealshinDAL();
 
             dal.addToLealshin(lealshin);
 

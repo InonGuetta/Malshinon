@@ -11,7 +11,7 @@ namespace Malshinon
     {
         static void Main(string[] args)
         {
-            ManageGeneral.Run();
+            LealshinSERVICE.Run();
         }
     }
 }
