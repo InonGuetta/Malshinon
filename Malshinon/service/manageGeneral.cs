@@ -3,50 +3,80 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Malshinon.classes;
+using Malshinon.DAL;
 
 namespace Malshinon.service
 {
-    internal class manageGeneral
+    internal class ManageGeneral
     {
-        void GetPersonByName()
-        {
+        static string[] to_malsin_status = { "malshin", "reporter", "potential_agent" };
 
-        }
-        void GetPersonBySecretCode()
-        {
 
-        }
-        void InsertNewPerson()
+        public static void Run()
         {
+            Random rnd = new Random();
+            string secret_code = "";
+            for(int i = 0;i< 10;i++){
+                char charRandom = (char)rnd.Next(0, 128);
+                secret_code += charRandom;
+            }
 
-        }
-        void InsertIntelReport()
-        {
+            Lealshin lealshin = new Lealshin(
+                "inon",
+                "guetta",
+                secret_code,
+                // למה הוא חייב לקבל ערך
+                // למה הוא לא יכול לקבל לא לקבל את הערך הזה הרי כבר מוגדר לי בטבלת SQL 
+                // ככזה שיש לו ערך ברירת מחדל הווי אומר שהוא יכול לא לקבל שום ערך 
+                to_malsin_status[0],
+                "הוא מלשין רציני",
+                "הלשין על 3 אנשים"
+            ); LealshinDAL dal = new LealshinDAL();
 
-        }
-        void UpdateReportCount()
-        {
+            dal.addToLealshin(lealshin);
 
+            Console.WriteLine("המלשין נוסף בהצלחה למסד הנתונים.");
         }
-        void UpdateMentionCount()
-        {
+        //void GetPersonByName()
+        //{
 
-        }
-        void GetReporterStats()
-        {
+        //}
+        //void GetPersonBySecretCode()
+        //{
 
-        }
-        void GetTargetStats()
-        {
+        //}
+        //void InsertNewPerson()
+        //{
 
-        }
-        void CreateAlert()
-        {
+        //}
+        //void InsertIntelReport()
+        //{
 
-        }
-        void GetAlerts()
-        {
+        //}
+        //void UpdateReportCount()
+        //{
 
-        }
+        //}
+        //void UpdateMentionCount()
+        //{
+
+        //}
+        //void GetReporterStats()
+        //{
+
+        //}
+        //void GetTargetStats()
+        //{
+
+        //}
+        //void CreateAlert()
+        //{
+
+        //}
+        //void GetAlerts()
+        //{
+
+        //}
     }
 }
