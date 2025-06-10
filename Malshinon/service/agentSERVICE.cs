@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Malshinon.service
 {
-    internal class agentSERVICE
+    internal class AgentSERVICE
     {
         // לשאול איך אני עושה כאן את הבדיקה 
         bool checkAgent()

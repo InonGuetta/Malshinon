@@ -99,10 +99,11 @@
     <Compile Include="classes\Lealshin.cs" />
     <Compile Include="DAL\AccusedDAL.cs" />
     <Compile Include="DAL\AgentDAL.cs" />
+    <Compile Include="DAL\text_content.cs" />
     <Compile Include="DAL\LealshinDAL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="service\agentSERVICE.cs" />
+    <Compile Include="service\AgentSERVICE.cs" />
     <Compile Include="service\LealshinSERVICE.cs" />
   </ItemGroup>
   <ItemGroup>
