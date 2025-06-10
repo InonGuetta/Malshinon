@@ -8,6 +8,12 @@ namespace Malshinon.service
 {
     internal class AccessAbility
     {
-
+        // לשאול איך אני עושה כאן את הבדיקה 
+        //bool checkAgent()
+        //{
+            //bool ans = false;
+            //return  ans;
+        //}
+        
     }
 }

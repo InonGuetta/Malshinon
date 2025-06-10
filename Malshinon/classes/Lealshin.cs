@@ -13,7 +13,7 @@ namespace Malshinon.classes
         public string malshin_first_name { get; set; }
         public string malshin_last_name { get; set; }
         public string malshin_secret_code { get; set;}
-        public int malshin_status { get; set; }
+        public string malshin_status { get; set; }
         public string malshin_about { get; set; }
         // אין להכניס לקונסטרקטור אלא אך ורק שזה יוגדל ב  1 כל הרצה שעושים 
         // למתודת ההוספה 
@@ -23,7 +23,7 @@ namespace Malshinon.classes
         public string malshin_content_halshana { get; set; }
 
         //---------------------------------------------------------------------------------------------------
-        public Lealshin(string malshinFirstName,string malshinLastName,string malshinSecretCode,int malshinStatus, string malshinAbout,string malshinContentHalshana)
+        public Lealshin(string malshinFirstName,string malshinLastName,string malshinSecretCode,string malshinStatus, string malshinAbout,string malshinContentHalshana)
         {
             // למה צריך את זה ?
             this.malshin_first_name = malshinFirstName;
@@ -32,9 +32,13 @@ namespace Malshinon.classes
             this.malshin_status = malshinStatus;
             this.malshin_about = malshinAbout;
             this.malshin_content_halshana = malshinContentHalshana;
-
-
         }
+        //---------------------------------------------------------------------------------------------------
 
+        public void addHalshane()
+        {
+            // איך אני מקשר בין זה 
+            // כלומר תמלא כאן את מה שצריך 
+        }
     }
 }
