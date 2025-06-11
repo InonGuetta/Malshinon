@@ -76,10 +76,6 @@ namespace Malshinon.service
                         found = true;
                         //search_name אני מעוניין שהשאילתה הזאת תוציא את כל הנתונים על האדם 
                         string query_singal = "SELECT * FROM accused WHERE accused_first_name , accused_last_name = @name";
-                        
-
-
-
                     }
                     else
                     {

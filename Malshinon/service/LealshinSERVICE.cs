@@ -29,7 +29,7 @@ namespace Malshinon.service
         {
             Random rnd = new Random();
             string secret_code = "";
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 11; i++)
             {
                 char charRandom = (char)rnd.Next(0, 128);
                 secret_code += charRandom;
@@ -53,7 +53,6 @@ namespace Malshinon.service
             string secret_code = Secret_Code();
             string malshin_about = Malshin_About();
         LealshinDAL to_halshana = new LealshinDAL();
-            // האם זה עובד תסתכל על כל הקוד ותחליט
         string query = to_halshana.InsertHalshanaFromClient(first_name, last_name, secret_code, malshin_about);
         to_halshana.PushSql(query);
         }
