@@ -11,7 +11,11 @@ namespace Malshinon
     {
         static void Main(string[] args)
         {
-            LealshinSERVICE.Run();
+            AgentSERVICE lealshin = new AgentSERVICE();
+
+
+            lealshin.printDetailsLealshin();
+
         }
     }
 }

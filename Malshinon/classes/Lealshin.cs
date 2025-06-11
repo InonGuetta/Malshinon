@@ -17,7 +17,6 @@ namespace Malshinon.classes
         public string malshin_about { get; set; }
         // אין להכניס לקונסטרקטור אלא אך ורק שזה יוגדל ב  1 כל הרצה שעושים 
         // למתודת ההוספה 
-        public int malshin_amount_halshana { get; set; }
 
 
 
@@ -30,7 +29,8 @@ namespace Malshinon.classes
             this.malshin_secret_code = malshinSecretCode;
             //this.malshin_status = malshinStatus;
             this.malshin_about = malshinAbout;
-            
+
+
         }
         //---------------------------------------------------------------------------------------------------
 

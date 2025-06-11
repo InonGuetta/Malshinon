@@ -13,112 +13,58 @@ namespace Malshinon.service
     internal class LealshinSERVICE
     {
         static string[] to_malsin_status = { "malshin", "reporter", "potential_agent" };
-
-
-        public static void Run()
-        {
-            Random rnd = new Random();
-            string secret_code = "";
-            for(int i = 0;i< 10;i++){
-                char charRandom = (char)rnd.Next(0, 128);
-                secret_code += charRandom;
-            }
-
-            Lealshin lealshin = new Lealshin(
-                "inon",
-                "guetta",
-                secret_code,
-                // למה הוא חייב לקבל ערך
-                // למה הוא לא יכול לקבל לא לקבל את הערך הזה הרי כבר מוגדר לי בטבלת SQL 
-                // ככזה שיש לו ערך ברירת מחדל הווי אומר שהוא יכול לא לקבל שום ערך 
-                //to_malsin_status[0],
-                "הוא מלשין רציני"
-                ); LealshinDAL dal = new LealshinDAL();
-
-            dal.addToLealshin(lealshin);
-
-            Console.WriteLine("המלשין נוסף בהצלחה למסד הנתונים.");
-        }
-
-
-        void printAll()
-        {
-            string connStr = "server=localhost;username=root;password=;database=malshinon;";
-            MySqlConnection conn = new MySqlConnection(connStr);
-
-            try
-            {
-                conn.Open();
-                string query = "SELECT * FROM malshinim";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    // הועתק במלואו ולא הובן כיאות 
-                    int malshin_id = reader.GetInt32("malshin_id");
-                    string malshin_first_name = reader.GetString("malshin_first_name");
-                    string malshin_last_name = reader.GetString("malshin_last_name");
-                    string malshin_secret_code = reader.GetString("malshin_secret_code");
-                    string malshin_status = reader["malshin_status"] == DBNull.Value ? "malshin" : reader.GetString("malshin_status");
-                    string malshin_about = reader["malshin_about"] == DBNull.Value ? "" : reader.GetString("malshin_about");
-                    int malshin_amount_halshana = reader["malshin_amount_halshana"] == DBNull.Value ? 0 : reader.GetInt32("malshin_amount_halshana");
-                    DateTime malshin_time_halshana = reader.GetDateTime("malshin_time_halshana");
-
-                    Console.WriteLine($"ID: {malshin_id}, Name: {malshin_first_name} {malshin_last_name}, Code: {malshin_secret_code}, " +
-                                      $"Status: {malshin_status}, About: {malshin_about}, Amount: {malshin_amount_halshana}, Time: {malshin_time_halshana}");
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"err: {e}" );
-            }
-            finally
-            {
-                conn.Close(); 
-            }
-
-
-        }
-
-
-
-
-
-         
-
-
-
-
-        //void GetPersonByName()
+        //void InsertIntelReport()
         //{
+        //    Random rnd = new Random();
+        //    string secret_code = "";
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        char charRandom = (char)rnd.Next(0, 128);
+        //        secret_code += charRandom;
+        //    }
 
-        //}
-        //void GetPersonBySecretCode()
-        //{
+        //    Console.WriteLine("insert first name");
+        //    string first_name  = Console.ReadLine();
+        //    Console.WriteLine("insert last name");
+        //    string last_name  = Console.ReadLine();
+        //    Console.WriteLine("STATUS to reporte press 1 | Defult don't choice anything = malshin ");
+        //    // תראה אחר כך איך אתה עושה את זה שזה יהיה אופציינלי 
+        //    int choice_anything = Convert.ToInt32(Console.ReadLine());
+        //    string malshin_about = Console.ReadLine();
 
+
+
+
+        //    Lealshin lealshin = new Lealshin(
+        //        first_name,
+        //        last_name,
+        //        secret_code,
+        //        //to_malsin_status[choice_anything],
+
+        //        // מה הבעיה כאן 
+        //        malshin_about,
+        //        ); LealshinDAL dal = new LealshinDAL();
+
+        //    dal.addToLealshin(lealshin);
+
+        //    Console.WriteLine("המלשין נוסף בהצלחה למסד הנתונים.");
         //}
+
+
+  
+
+
+        //-------------------------------------------------------------------------------------------------------
+
+
         //void InsertNewPerson()
         //{
 
         //}
-        //void InsertIntelReport()
-        //{
+        //void UpdateReportCount(){
 
-        //}
-        //void UpdateReportCount()
         //{
-
-        //}
         //void UpdateMentionCount()
-        //{
-
-        //}
-        //void GetReporterStats()
-        //{
-
-        //}
-        //void GetTargetStats()
         //{
 
         //}
@@ -126,9 +72,6 @@ namespace Malshinon.service
         //{
 
         //}
-        //void GetAlerts()
-        //{
 
-        //}
     }
 }
