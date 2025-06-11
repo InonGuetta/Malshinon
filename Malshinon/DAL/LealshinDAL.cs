@@ -15,28 +15,8 @@ namespace Malshinon.DAL
     internal class LealshinDAL
     {
         string connStr = "server=localhost;username=root;password=;database=malshinon;";
-        //-------------------------------------------------------------------------------------
-        // לבין זה 
-        //public void addToLealshin(Lealshin lealshin)
-        //{
-        //    // שים לב כי זה צריך להיות מחוץ ל using
-        //    string query = "INSERT INTO malshinim(malshin_first_name,malshin_last_name,malshin_secret_code,malshin_status,malshin_about)" +
-        //        "VALUES (@malshin_first_name,@malshin_last_name,@malshin_secret_code,@malshin_status,@malshin_about)";
 
-        //    using(MySqlConnection conn = new MySqlConnection(connStr)){
-        //        conn.Open();
-        //        MySqlCommand cmd = new MySqlCommand(query,conn);
-        //        cmd.Parameters.AddWithValue(@"malshin_first_name", lealshin.malshin_first_name);
-        //        cmd.Parameters.AddWithValue(@"malshin_last_name", lealshin.malshin_last_name);
-        //        cmd.Parameters.AddWithValue(@"malshin_secret_code", lealshin.malshin_secret_code);
-        //        cmd.Parameters.AddWithValue(@"malshin_about", lealshin.malshin_about);
-
-        //        cmd.ExecuteNonQuery();
-        //    }
-
-        //}
-        //-------------------------------------------------------------------------------------
-        
+    // -----------------------------------------------------------------------------------------------------------------------     
         public string InsertHalshanaFromClient(string first_name,string last_name, string secret_code,string malshin_about) 
         {
             string query = $"INSERT INTO malshinim (malshin_first_name,malshin_last_name,malshin_secret_code,malshin_about ) " +
@@ -60,6 +40,57 @@ namespace Malshinon.DAL
                 }
             }
         }
+        // -----------------------------------------------------------------------------------------------------------------------     
+        public bool CheckUserExists(string username)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = $"SELECT COUNT(*) FROM malshinim WHERE malshin_first_name = @name";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@name", username);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        // -----------------------------------------------------------------------------------------------------------------------     
+        public int GetMalshinIdByName(string first_name)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+                string query = "SELECT malshin_id FROM malshinim WHERE malshin_first_name = @name LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(query,conn);
+                // מה זה עושה 01
+                cmd.Parameters.AddWithValue("@name",first_name);   
+                // מה זה עושה 02
+                object result = cmd.ExecuteScalar();
+                return (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : -1;
+            }
+        }
+        // -----------------------------------------------------------------------------------------------------------------------     
+        // לא עובד 
+        //public void InsertIntelReport(int malshinId, string content)
+        //{
+        //    using (MySqlConnection conn = new MySqlConnection(connStr))
+        //    {
+        //        conn.Open();
+        //        string query = "INSERT INTO intel_reports (malshin_id, report_content) VALUES (@id, @content)";
+        //        MySqlCommand cmd = new MySqlCommand(query, conn);
+        //        cmd.Parameters.AddWithValue("@id", malshinId);
+        //        cmd.Parameters.AddWithValue("@content", content);
+        //        cmd.ExecuteNonQuery();
+        //    }
+        //}
+
 
     }
 }
