@@ -14,9 +14,6 @@ namespace Malshinon.DAL
     internal class LealshinDAL
     {
         string connStr = "server=localhost;username=root;password=;database=malshinon;";
-     
-        
-        
         //-------------------------------------------------------------------------------------
         // לבין זה 
         public void addToLealshin(Lealshin lealshin)
@@ -34,12 +31,15 @@ namespace Malshinon.DAL
                 //cmd.Parameters.AddWithValue(@"malshin_status", lealshin.malshin_status);
                 cmd.Parameters.AddWithValue(@"malshin_about", lealshin.malshin_about);
 
-                // למה אני צריך את זה 001?
+
+
+
                 cmd.ExecuteNonQuery();
             }
 
         }
-
         //-------------------------------------------------------------------------------------
+
+
     }
 }
