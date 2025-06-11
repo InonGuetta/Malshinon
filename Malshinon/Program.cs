@@ -12,13 +12,8 @@ namespace Malshinon
     {
         static void Main(string[] args)
         {
-
-            //LealshinSERVICE halshana = new LealshinSERVICE();
-            //halshana.InsertIntelReport();
-            //------------------------------------------------
-            //מדפיס את כולם 
-            AgentSERVICE lealshin = new AgentSERVICE();
-            lealshin.printDetailsLealshin();
+            MenuSERVICE menu = new MenuSERVICE();
+            menu.Menu();
         }
     }
 }
