@@ -12,50 +12,51 @@ namespace Malshinon.service
 {
     internal class LealshinSERVICE
     {
-        static string[] to_malsin_status = { "malshin", "reporter", "potential_agent" };
-        //void InsertIntelReport()
-        //{
-        //    Random rnd = new Random();
-        //    string secret_code = "";
-        //    for (int i = 0; i < 10; i++)
-        //    {
-        //        char charRandom = (char)rnd.Next(0, 128);
-        //        secret_code += charRandom;
-        //    }
-
-        //    Console.WriteLine("insert first name");
-        //    string first_name  = Console.ReadLine();
-        //    Console.WriteLine("insert last name");
-        //    string last_name  = Console.ReadLine();
-        //    Console.WriteLine("STATUS to reporte press 1 | Defult don't choice anything = malshin ");
-        //    // תראה אחר כך איך אתה עושה את זה שזה יהיה אופציינלי 
-        //    int choice_anything = Convert.ToInt32(Console.ReadLine());
-        //    string malshin_about = Console.ReadLine();
-
-
-
-
-        //    Lealshin lealshin = new Lealshin(
-        //        first_name,
-        //        last_name,
-        //        secret_code,
-        //        //to_malsin_status[choice_anything],
-
-        //        // מה הבעיה כאן 
-        //        malshin_about,
-        //        ); LealshinDAL dal = new LealshinDAL();
-
-        //    dal.addToLealshin(lealshin);
-
-        //    Console.WriteLine("המלשין נוסף בהצלחה למסד הנתונים.");
-        //}
-
-
-  
-
-
         //-------------------------------------------------------------------------------------------------------
+        public string First_Name()
+        {
+            Console.WriteLine("please insert your first_name: ");
+            return Console.ReadLine();
+        }
+        //================================================================
+        public string Last_Name()
+        {
+            Console.WriteLine("please insert your last_name: ");
+            return Console.ReadLine();
+        }
+        //================================================================
+        public string Secret_Code()
+        {
+            Random rnd = new Random();
+            string secret_code = "";
+            for (int i = 0; i < 10; i++)
+            {
+                char charRandom = (char)rnd.Next(0, 128);
+                secret_code += charRandom;
+            }
+            return secret_code;
 
+        }
+        //================================================================
+
+        public string Malshin_About()
+        {
+            Console.WriteLine("about how you wan't Lehalsin yamaniak");
+            return Console.ReadLine();
+        }
+        
+        //-------------------------------------------------------------------------------------------------------
+        public void InsertIntelReport()
+        {
+            string first_name = First_Name();
+            string last_name = Last_Name();
+            string secret_code = Secret_Code();
+            string malshin_about = Malshin_About();
+        LealshinDAL to_halshana = new LealshinDAL();
+            // האם זה עובד תסתכל על כל הקוד ותחליט
+        string query = to_halshana.InsertHalshanaFromClient(first_name, last_name, secret_code, malshin_about);
+        to_halshana.PushSql(query);
+        }
 
         //void InsertNewPerson()
         //{

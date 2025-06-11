@@ -24,7 +24,7 @@ namespace Malshinon.service
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 Console.WriteLine("----------------------------------------------------------------------------------------------------------------------");
-                Console.WriteLine($"{"ID",-5} | {"First Name",-12} | {"Last Name",-12} | {"Code",-15} | {"Status",-15} | {"About",-20} | {"Time",-19} | ");
+                Console.WriteLine($"| {"ID",-5} | {"First Name",-12} | {"Last Name",-12} | {"Code",-15} | {"Status",-15} | {"About",-20} | {"Time",-19} | ");
                 Console.WriteLine("----------------------------------------------------------------------------------------------------------------------");
 
                 while (reader.Read())
@@ -35,10 +35,9 @@ namespace Malshinon.service
                     string malshin_secret_code = reader.GetString("malshin_secret_code");
                     string malshin_status = reader["malshin_status"] == DBNull.Value ? "malshin" : reader.GetString("malshin_status");
                     string malshin_about = reader["malshin_about"] == DBNull.Value ? "" : reader.GetString("malshin_about");
-                    int malshin_amount_halshana = reader["malshin_amount_halshana"] == DBNull.Value ? 0 : reader.GetInt32("malshin_amount_halshana");
                     DateTime malshin_time_halshana = reader.GetDateTime("malshin_time_halshana");
 
-                    Console.WriteLine($"{malshin_id,-5} | {malshin_first_name,-12} | {malshin_last_name,-12} | {malshin_secret_code,-15} | {malshin_status,-15} | {malshin_about,-20} | {malshin_time_halshana,-10} | ");
+                    Console.WriteLine($"| {malshin_id,-5} | {malshin_first_name,-12} | {malshin_last_name,-12} | {malshin_secret_code,-15} | {malshin_status,-15} | {malshin_about,-20} | {malshin_time_halshana,-10} | ");
                     Console.WriteLine("----------------------------------------------------------------------------------------------------------------------");
                 }
             }
@@ -56,7 +55,6 @@ namespace Malshinon.service
 
         public void GetPersonByName()
         {
-     
             Console.WriteLine("please enter the name to search: ");
             string search_name = Console.ReadLine();
 
