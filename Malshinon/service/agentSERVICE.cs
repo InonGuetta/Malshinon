@@ -96,42 +96,19 @@ namespace Malshinon.service
         }
         //-------------------------------------------------------------------------------------------------------------------
 
-        public string First_Name()
-        {
-            Console.WriteLine("please insert your first_name: ");
-            return Console.ReadLine();
-
-        }
-        //================================================================
-        public string Last_Name()
-        {
-            Console.WriteLine("please insert your last_name: ");
-            return Console.ReadLine();
-        }
-        //================================================================
-        public string Secret_Code()
-        {
-            Random rnd = new Random();
-            string secret_code = "";
-            for (int i = 0; i < 11; i++)
-            {
-                char charRandom = (char)rnd.Next(0, 128);
-                secret_code += charRandom;
-            }
-            return secret_code;
-
-        }
+        LealshinSERVICE import_parameters = new LealshinSERVICE();
 
         //----------------------------------------------------------------------------------------------------------
-        //public void createNewAgent(string first_name)
-        //{
-        //    string last_name = Last_Name();
-        //    string secret_code = Secret_Code();
-        //    AgentDAL agentDAL = new AgentDAL();
-        //    string query = .InsertHalshanaFromClient(first_name, last_name, secret_code);
+        public void createNewAgent(string first_name)
+        {
+            string last_name = import_parameters.Last_Name();
+            string secret_code = import_parameters.Secret_Code();
+            AgentDAL agentDAL = new AgentDAL();
+            string query = agentDAL.InsertAgentFromClient(first_name, last_name, secret_code);
+            agentDAL.PushSql(query);
 
-
-        //}
+        }
+        //----------------------------------------------------------------------------------------------------------
 
         //void GetPersonBySecretCode(){
         //{

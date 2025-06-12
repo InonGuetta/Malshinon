@@ -16,13 +16,14 @@ namespace Malshinon.DAL
     {
         string connStr = "server=localhost;username=root;password=;database=malshinon;";
 
-    // -----------------------------------------------------------------------------------------------------------------------     
+        // -----------------------------------------------------------------------------------------------------------------------     
         public string InsertHalshanaFromClient(string first_name,string last_name, string secret_code,string malshin_about) 
         {
             string query = $"INSERT INTO malshinim (malshin_first_name,malshin_last_name,malshin_secret_code,malshin_about ) " +
                 $"VALUES  ('{first_name}','{last_name}','{secret_code}','{malshin_about}');";
             return query;
-        } 
+        }
+        // -----------------------------------------------------------------------------------------------------------------------
 
         public void PushSql(string query)
         {
