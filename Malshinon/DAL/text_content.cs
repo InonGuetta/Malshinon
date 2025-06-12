@@ -11,5 +11,6 @@ namespace Malshinon.DAL
         string connStr = "server=localhost;username=root;password=;database=malshinon;";
         // --------------------------------------------------------------------------------------
 
+
     }
 }

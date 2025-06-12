@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Malshinon.DAL;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Crypto.Digests;
 using ZstdSharp.Unsafe;
@@ -13,6 +14,8 @@ namespace Malshinon.service
     internal class AgentSERVICE
     {
         string connStr = "server=localhost;username=root;password=;database=malshinon;";
+        //-------------------------------------------------------------------------------------------------------------------
+        // עובד כמו שצריך
         public void printDetailsLealshin()
         {
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -52,7 +55,7 @@ namespace Malshinon.service
         }
         //-------------------------------------------------------------------------------------------------------------------
 
-
+        // צריך לבדוק האם זה עובד
         public void GetPersonByName()
         {
             Console.WriteLine("please enter the name to search: ");
@@ -74,7 +77,6 @@ namespace Malshinon.service
                     {
                         Console.WriteLine($"the name {search_name} exsit");
                         found = true;
-                        //search_name אני מעוניין שהשאילתה הזאת תוציא את כל הנתונים על האדם 
                         string query_singal = "SELECT * FROM accused WHERE accused_first_name , accused_last_name = @name";
                     }
                     else
@@ -86,10 +88,50 @@ namespace Malshinon.service
                 {
                     Console.WriteLine($"err: {e}");
                 }
+                finally
+                {
+                    conn.Close();
+                }
             }
         }
         //-------------------------------------------------------------------------------------------------------------------
 
+        public string First_Name()
+        {
+            Console.WriteLine("please insert your first_name: ");
+            return Console.ReadLine();
+
+        }
+        //================================================================
+        public string Last_Name()
+        {
+            Console.WriteLine("please insert your last_name: ");
+            return Console.ReadLine();
+        }
+        //================================================================
+        public string Secret_Code()
+        {
+            Random rnd = new Random();
+            string secret_code = "";
+            for (int i = 0; i < 11; i++)
+            {
+                char charRandom = (char)rnd.Next(0, 128);
+                secret_code += charRandom;
+            }
+            return secret_code;
+
+        }
+
+        //----------------------------------------------------------------------------------------------------------
+        //public void createNewAgent(string first_name)
+        //{
+        //    string last_name = Last_Name();
+        //    string secret_code = Secret_Code();
+        //    AgentDAL agentDAL = new AgentDAL();
+        //    string query = .InsertHalshanaFromClient(first_name, last_name, secret_code);
+
+
+        //}
 
         //void GetPersonBySecretCode(){
         //{
