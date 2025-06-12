@@ -15,11 +15,9 @@ namespace Malshinon.service
         //-------------------------------------------------------------------------------------------------------
         public string First_Name()
         {
-      
             Console.WriteLine("please insert your first_name: ");
             return Console.ReadLine();
             
-  
         }
         //================================================================
         public string Last_Name()
@@ -60,7 +58,6 @@ namespace Malshinon.service
             to_halshana.PushSql(query);
         }
         //-------------------------------------------------------------------------------------------------------
-        // עדיין לא בשימוש
         public void InsertButSecretCodeNotFound()
         {
             string first_name = First_Name();
