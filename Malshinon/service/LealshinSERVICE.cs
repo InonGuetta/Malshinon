@@ -17,7 +17,7 @@ namespace Malshinon.service
         {
             Console.WriteLine("please insert your first_name: ");
             return Console.ReadLine();
-            
+
         }
         //================================================================
         public string Last_Name()
@@ -45,29 +45,50 @@ namespace Malshinon.service
             Console.WriteLine("about how you wan't Lehalsin yamaniak");
             return Console.ReadLine();
         }
-
-
+        //================================================================
+        public string contentHalshana(){
+            Console.WriteLine("please insert here content halshana");
+            return Console.ReadLine();
+        }
         //-------------------------------------------------------------------------------------------------------
         public void InsertButNameNotFound(string checkName)
         {
             string last_name = Last_Name();
             string secret_code = Secret_Code();
             string malshin_about = Malshin_About();
+            //---
             LealshinDAL to_halshana = new LealshinDAL();
             string query = to_halshana.InsertHalshanaFromClient(checkName, last_name, secret_code, malshin_about);
             to_halshana.PushSql(query);
         }
         //-------------------------------------------------------------------------------------------------------
-        public void InsertButSecretCodeNotFound()
+        // הקוד לא פעיל כרגע 
+        public void InsertContentHalshana()
         {
-            string first_name = First_Name();
-            string last_name = Last_Name();
-            string secret_code = Secret_Code();
-            string malshin_about = Malshin_About();
-            LealshinDAL to_halshana = new LealshinDAL();
-            string query = to_halshana.InsertHalshanaFromClient(first_name , last_name, secret_code, malshin_about);
-            to_halshana.PushSql(query);
+            // מה הבעיה בקוד הזה 002
+            //Text_contentDAL to_halshana_content = new Text_contentDAL();
+            //string query = to_halshana_content.InsertHalshanaToContentFromClient();
+            //to_halshana_content.PushSql(query);
+
         }
+
+
+
+
+
+
+
+
+        //public void InsertButSecretCodeNotFound()
+        //{
+        //    string first_name = First_Name();
+        //    string last_name = Last_Name();
+        //    string secret_code = Secret_Code();
+        //    string malshin_about = Malshin_About();
+        //    LealshinDAL to_halshana = new LealshinDAL();
+        //    string query = to_halshana.InsertHalshanaFromClient(first_name , last_name, secret_code, malshin_about);
+        //    to_halshana.PushSql(query);
+        //}
         //void InsertNewPerson()
         //{
 

@@ -30,30 +30,26 @@ namespace Malshinon.service
                     case 1:
                         Console.WriteLine("please enter here you name");
                         string checkName = Console.ReadLine();
-                        // איך אני שולח את זה לבדיקה אצל ה SQL
-                        // תשאל שאלות מנחות שאתה חושב שאתה צריך לדעת ותתחשב בתמונה המצורפת
                         LealshinDAL lealshinDAL = new LealshinDAL();
                         bool foundName = lealshinDAL.CheckUserExists(checkName);
                         if (foundName)
                         {
-                            // הקוד כאן לא עובד 
                             Console.WriteLine("you found in system  \n");
-                            //LealshinSERVICE lealshinSERVICE = new LealshinSERVICE();
-                            //int id = lealshinDAL.GetMalshinIdByName(checkName);
-                            //Console.WriteLine("Enter your intel report:");
-                            //string report = Console.ReadLine();
-
-                            ////lealshinDAL.InsertIntelReport(id, report);
-                            //Console.WriteLine("halshana added successfully.");
 
                         }
                         else
                         {
                             LealshinSERVICE halshana = new LealshinSERVICE();
+                            
                             Console.WriteLine("you NOT found in system but you insert you right now  and inserted you name");
                             Console.WriteLine("We will now create a new informant card.");
                             halshana.InsertButNameNotFound(checkName);
                         }
+                        // אני מעוניין שיהיה כאן 
+                        // את הקוד שהוא מוסיף את הערכים לטבלת
+                        // ה SQL text_content
+                        Console.WriteLine("please insert here Content of halshana");
+                        LealshinSERVICE lealshinSERVICE = new LealshinSERVICE();
 
                         break;
                     case 2:
@@ -78,9 +74,10 @@ namespace Malshinon.service
                         }
                         break;
                     case 4:
+                        Console.WriteLine("Insert details for new agent");
+                        string creat_agent = Console.ReadLine();
                         AgentSERVICE create_agent = new AgentSERVICE();
-                        // עדיין לא עובד כמו שצריך 
-                        //create_agent.createNewAgent();
+                        create_agent.createNewAgent(creat_agent);
                         break;
                     case 9:
                         pause = true;

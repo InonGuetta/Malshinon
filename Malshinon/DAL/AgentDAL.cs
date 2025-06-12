@@ -14,17 +14,28 @@ namespace Malshinon.DAL
         string connStr = "server=localhost;username=root;password=;database=malshinon;";
 
         //-------------------------------------------------------------------------------------
-        public void addToAgent(Agent agent)
+        public string InsertAgentFromClient(string first_name, string last_name, string secret_code)
         {
-            string query = "INSERT INTO agents(agent_first_name,agent_last_name,agent_secret_code ) " +
-                "VALUES (@agent_first_name,@agent_last_name,@agent_secret_code)";
+                string query = $"INSERT INTO agents(agent_first_name,agent_last_name,agent_secret_code ) " +
+                    $"VALUES ('{first_name}','{last_name}','{secret_code}')";
+
+            return query;
+        }
+        //-------------------------------------------------------------------------------------
+        public void PushSql(string query)
+        {
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
-                MySqlCommand cmd = new MySqlCommand(query,conn);
-                cmd.Parameters.AddWithValue(@"agent_first_name", agent.agent_first_name);
-                cmd.Parameters.AddWithValue(@"agent_last_name", agent.agent_last_name);
-                cmd.Parameters.AddWithValue(@"agent_secret_code", agent.agent_secret_code);
-            
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"err: {e}");
+                }
             }
         }
         //-------------------------------------------------------------------------------------
