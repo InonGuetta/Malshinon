@@ -40,14 +40,13 @@ namespace Malshinon.service
                         else
                         {
                             LealshinSERVICE halshana = new LealshinSERVICE();
+
                             
                             Console.WriteLine("you NOT found in system but you insert you right now  and inserted you name");
                             Console.WriteLine("We will now create a new informant card.");
                             halshana.InsertButNameNotFound(checkName);
+                            
                         }
-                        // אני מעוניין שיהיה כאן 
-                        // את הקוד שהוא מוסיף את הערכים לטבלת
-                        // ה SQL text_content
                         Console.WriteLine("please insert here Content of halshana");
                         LealshinSERVICE lealshinSERVICE = new LealshinSERVICE();
 
