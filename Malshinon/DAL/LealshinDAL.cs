@@ -78,20 +78,6 @@ namespace Malshinon.DAL
             }
         }
         // -----------------------------------------------------------------------------------------------------------------------     
-        // לא עובד 
-        //public void InsertIntelReport(int malshinId, string content)
-        //{
-        //    using (MySqlConnection conn = new MySqlConnection(connStr))
-        //    {
-        //        conn.Open();
-        //        string query = "INSERT INTO intel_reports (malshin_id, report_content) VALUES (@id, @content)";
-        //        MySqlCommand cmd = new MySqlCommand(query, conn);
-        //        cmd.Parameters.AddWithValue("@id", malshinId);
-        //        cmd.Parameters.AddWithValue("@content", content);
-        //        cmd.ExecuteNonQuery();
-        //    }
-        //}
-
 
     }
 }

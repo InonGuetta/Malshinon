@@ -56,6 +56,7 @@ namespace Malshinon.service
         public string contentHalshana()
         {
             Console.WriteLine("please insert here content halshana");
+            //AccusedDAL accusedDAL = new AccusedDAL();
             return Console.ReadLine();
         }
 
@@ -65,15 +66,23 @@ namespace Malshinon.service
             string last_name = Last_Name();
             string secret_code = Secret_Code();
             string malshin_about = Malshin_About();
-            string content_halshana = contentHalshana();
             //---
             LealshinDAL to_halshana = new LealshinDAL();
             AccusedDAL accusedDAL = new AccusedDAL();
+            Text_contentDAL text_ContentDAL = new Text_contentDAL();
 
 
             string query = to_halshana.InsertHalshanaFromClient(checkName, last_name, secret_code, malshin_about);
             to_halshana.PushSql(query);
 
+
+            string content_halshana = contentHalshana();
+            string queryContentToHalshana = text_ContentDAL.InsertHalshanaToContentClient(content_halshana);
+
+            // האם כשאני ישנה את הפונקצייה 
+            // לכך שהיא תחזיר VOID 
+            // הפונקצייה InsertHalshanaFromClientToAccused 
+            // עדיין תעבוד 
             string queryToAccused = accusedDAL.InsertHalshanaFromClientToAccused(malshin_about);
             accusedDAL.PushSql(queryToAccused);
 
@@ -82,18 +91,9 @@ namespace Malshinon.service
 
 
 
-
         }
-        
 
-        //-------------------------------------------------------------------------------------------------------
-        public void InsertContentHalshana()
-        {
-            // מה הבעיה בקוד הזה 002
-            //Text_contentDAL to_halshana_content = new Text_contentDAL();
-            //string query = to_halshana_content.InsertHalshanaToContentFromClient();
-            //to_halshana_content.PushSql(query);
-        }
+
         //-------------------------------------------------------------------------------------------------------
 
 

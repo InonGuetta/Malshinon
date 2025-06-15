@@ -14,11 +14,6 @@ namespace Malshinon.service
         public void Menu()
         {
 
-
-
-
-
-
         bool pause = false;
         while(!pause){
             Console.WriteLine("PRESS 1 - insert user name to halshana | PRESS 2 - insert user password to halshana | PRESS 3 - to show all data malshinim" +
@@ -32,23 +27,25 @@ namespace Malshinon.service
                         string checkName = Console.ReadLine();
                         LealshinDAL lealshinDAL = new LealshinDAL();
                         bool foundName = lealshinDAL.CheckUserExists(checkName);
+                        LealshinSERVICE halshana = new LealshinSERVICE();
+                        Text_contentDAL text_ContentDAL = new Text_contentDAL();
                         if (foundName)
                         {
                             Console.WriteLine("you found in system  \n");
-
                         }
                         else
                         {
-                            LealshinSERVICE halshana = new LealshinSERVICE();
-
-                            
                             Console.WriteLine("you NOT found in system but you insert you right now  and inserted you name");
                             Console.WriteLine("We will now create a new informant card.");
                             halshana.InsertButNameNotFound(checkName);
-                            
+                            Console.WriteLine("please insert here Content of halshana");
+                            string halshana_content = Console.ReadLine();
+                            text_ContentDAL.InsertHalshanaToContentClient(halshana_content);
+
+
+
                         }
-                        Console.WriteLine("please insert here Content of halshana");
-                        LealshinSERVICE lealshinSERVICE = new LealshinSERVICE();
+
 
                         break;
                     case 2:

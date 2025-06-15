@@ -11,15 +11,50 @@ namespace Malshinon.DAL
     {
         string connStr = "server=localhost;username=root;password=;database=malshinon;";
         // -----------------------------------------------------------------------------------------------------------------------
+        
+        public int Malshinim_Id()
+        {
+
+            int malshinim_id = 1;  
+            return malshinim_id;
+        }
+        //================================================================
+        public int Accused_Id()
+        {
+            int accused_id = 2;
+            return accused_id;
+        }
+
+
+        // -----------------------------------------------------------------------------------------------------------------------
 
         // הקוד לא פעיל כרגע
-        
-        
-        public string InsertHalshanaToContentClient(int text_content_id, int malshinim_id, int accused_id, string content_report)
+        public string InsertHalshanaToContentClient(string content_report)
         {
-            string query = $"INSERT INTO text_content (text_content_id,malshinim_id,accused_id,content_report ) " +
-                $"VALUES  ('{text_content_id}','{malshinim_id}','{accused_id}','{content_report}');";
-            return query;
+            int malshinim_id = Malshinim_Id();
+            int accused_id = Accused_Id();
+            string query = $"INSERT INTO text_content (malshinim_id,accused_id,content_report ) " +
+                $"VALUES  ('{malshinim_id}','{accused_id}','{content_report}');";
+            PushSql(query);
+            return "";
+        }
+
+        // -----------------------------------------------------------------------------------------------------------------------
+        public void PushSql(string query)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"err: {e}");
+                }
+            }
         }
 
 

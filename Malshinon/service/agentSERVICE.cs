@@ -15,7 +15,6 @@ namespace Malshinon.service
     {
         string connStr = "server=localhost;username=root;password=;database=malshinon;";
         //-------------------------------------------------------------------------------------------------------------------
-        // עובד כמו שצריך
         public void printDetailsLealshin()
         {
             MySqlConnection conn = new MySqlConnection(connStr);
